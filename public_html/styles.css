@@ -119,7 +119,6 @@ nav a:hover {
     width: 50vw;
     height: 31.1rem;
     top: 5.9rem;
-    overflow-x: visible;
 }
 
 #youtube-contain{
@@ -128,7 +127,8 @@ nav a:hover {
 
 #youtube-container-full{
     background-image: url("./assets/home/homebackground-1.svg");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: left;
 }
 
@@ -144,6 +144,7 @@ nav a:hover {
     font-weight: var(--fw-semibold);
 }
 
+/*about*/
 
 @media (max-width: 1200px) {
 #banner-spacer-home{
