@@ -144,10 +144,18 @@ nav a:hover {
     font-weight: var(--fw-semibold);
 }
 
+
 /*about*/
 
 @media (max-width: 1200px) {
 #banner-spacer-home{
-    display: none;
+    display: none!important;
 }
 }
+
+@media (max-width: 991px) {
+    #expanded-bottle {
+        display: none!important;
+    }
+}
+
