@@ -15,6 +15,7 @@
     --fw-regular: 400;
 }
 
+/*site wide styling*/
 h1{
     font-family: 'Montserrat', sans-serif;
     font-size: 60px;
@@ -51,6 +52,35 @@ p{
     font-weight: var(--fw-regular);
 }
 
+.blue-section{
+    background-color: var(--PillCallDarkBlue);
+    color: var(--PillCallGrey)
+}
+
+.styled-button{
+    border: none;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 30px;
+    background-color: var(--PillCallYellow);
+    color: var(--PillCallDarkBlue);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: var(--fw-semibold);
+    max-width: 30rem;
+}
+
+.styled-button:hover{
+    background-color: var(--PillCallGrey);
+}
+
+.return-top:hover{
+    opacity: 50%;
+}
+
+footer{
+    background-color: var(--PillCallYellow);
+}
+
 /*Navigation*/
 
 nav{
@@ -64,7 +94,7 @@ nav a {
 }
 
 nav a:hover {
-    /*text-decoration: underline;*/
+   opacity: 50%;
 }
 
 .currentPage{
@@ -77,10 +107,46 @@ nav a:hover {
     padding-right: 3em;
 }
 
+.navbar-toggler{
+    border: 2px solid var(--PillCallYellow);
+    margin-top: 2rem;
+}
 
-/*!*Nagivation*!*/
-/*@media (max-width: 395px) {*/
-/*.navbar-brand{*/
-/*    margin-bottom: 1em;*/
-/*}*/
-/*}*/
+/*home page*/
+#banner-spacer-home{
+    background-color: var(--PillCallDarkBlue);
+    position: relative;
+    width: 50vw;
+    height: 31.1rem;
+    top: 5.9rem;
+    overflow-x: visible;
+}
+
+#youtube-contain{
+    min-height: 50vh;
+}
+
+#youtube-container-full{
+    background-image: url("./assets/home/homebackground-1.svg");
+    background-size: cover;
+    background-position: left;
+}
+
+#get-started-home{
+    background-image: url("./assets/home/homebackground-2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.styled-text{
+    color: var(--PillCallYellow);
+    font-weight: var(--fw-semibold);
+}
+
+
+@media (max-width: 1200px) {
+#banner-spacer-home{
+    display: none;
+}
+}
