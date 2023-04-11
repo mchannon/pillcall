@@ -142,7 +142,7 @@ if ( $option == '4' ) {
 %mail = (
          from => 'unknown@mattchannon.com',
 #         to => 'listpop@gmail.com',
-         to => 'jordyn@pillcall.com',
+         to => 'matt@loitery.com',
 #         to => 'support@listpop.net',
          subject => 'PillCall.com: Mail',
          'content-type' => 'text/html; charset="iso-8859-1"',
