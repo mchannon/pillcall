@@ -113,6 +113,12 @@ nav a:hover {
 }
 
 /*home page*/
+
+/*addresses horizontal scroll*/
+#hero-banner{
+    max-width: 97vw;
+}
+
 #banner-spacer-home{
     background-color: var(--PillCallDarkBlue);
     position: relative;
