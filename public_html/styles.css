@@ -125,15 +125,15 @@ nav a:hover {
     min-height: 50vh;
 }
 
-#youtube-container-full{
-    background-image: url("./assets/home/homebackground-1.svg");
+#youtube-container-full, #about-section-top, #get-started-top {
+    background-image: url("assets/backgrounds/background-1.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
 }
 
 #get-started-home{
-    background-image: url("./assets/home/homebackground-2.svg");
+    background-image: url("assets/backgrounds/background-2.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -147,9 +147,21 @@ nav a:hover {
 
 /*about*/
 
+#about-section-top{
+
+}
+
+/*get started*/
+#get-started-bottom{
+    background-image: url("assets/backgrounds/background-3.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
 @media (max-width: 1200px) {
 #banner-spacer-home{
-    display: none!important;
+    display: none;
 }
 }
 
