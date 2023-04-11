@@ -169,5 +169,13 @@ nav a:hover {
     #expanded-bottle {
         display: none!important;
     }
+    #function-icons-vertical{
+        display: none!important;
+    }
 }
 
+@media (min-width: 991px) {
+    #function-icons-horizontal{
+        display: none!important;
+    }
+}
