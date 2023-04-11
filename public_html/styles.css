@@ -159,6 +159,59 @@ nav a:hover {
     background-position: right;
 }
 
+/*invest*/
+#email-form label {
+    clear: both;
+    color: var(--PillCallGrey);
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: var(--fw-regular);
+}
+#email-form input[type="text"],
+#email-form textarea {
+    border: none;
+    background: white;
+    color: var(--PillCallDarkBlue);
+    display: block;
+    overflow: auto;
+    padding: 5px;
+    width: 75vw;
+    border-radius: 10px;
+}
+
+#email-form #name,
+#email-form #name-label,
+#email-form #email,
+#email-form #email-label,
+#email-form #umbrella,
+#email-form #umbrella-label {
+    display: none;
+}
+#email-form textarea {
+    height: 80px;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 30px;
+    background-color: var(--PillCallYellow);
+    color: var(--PillCallDarkBlue);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: var(--fw-semibold);
+    max-width: 30rem;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+input[type="submit"]:hover {
+    background-color: var(--PillCallGrey);
+    color: var(--PillCallDarkBlue);
+}
+
 @media (max-width: 1200px) {
 #banner-spacer-home{
     display: none;
