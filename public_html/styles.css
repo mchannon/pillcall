@@ -157,9 +157,8 @@ nav a:hover {
 
 
 /*about*/
-
-#about-section-top{
-
+#expanded-bottle{
+    max-height: 80vh;
 }
 
 /*get started*/
