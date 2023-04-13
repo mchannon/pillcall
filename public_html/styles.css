@@ -147,7 +147,7 @@ nav a:hover {
 }
 
 .icons{
-    height: 4rem;
+    height: 3rem;
 }
 
 .styled-text{
@@ -158,7 +158,11 @@ nav a:hover {
 
 /*about*/
 #expanded-bottle{
-    max-height: 80vh;
+    max-height: 70vh;
+}
+
+#matt-pic{
+    max-height: 50vh;
 }
 
 /*get started*/
@@ -169,6 +173,19 @@ nav a:hover {
     background-position: right;
 }
 
+.start-image{
+    max-height: 50vh;
+}
+
+#start-phone{
+    max-height: 60vh;
+}
+
+/*how it works*/
+
+#function-icons-vertical{
+    max-height: 50vh;
+}
 /*invest*/
 #email-form label {
     clear: both;
@@ -222,6 +239,11 @@ input[type="submit"]:hover {
     color: var(--PillCallDarkBlue);
 }
 
+#invest-pic{
+    max-height: 60vh;
+}
+
+/*media queries*/
 @media (max-width: 1200px) {
 #banner-spacer-home{
     display: none;
