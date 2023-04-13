@@ -18,37 +18,37 @@
 /*site wide styling*/
 h1{
     font-family: 'Montserrat', sans-serif;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: var(--fw-extrabold);
 }
 
 h2, h3{
     font-family: 'Montserrat', sans-serif;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: var(--fw-bold);
 }
 
 h4{
     font-family: 'Montserrat', sans-serif;
-    font-size: 45px;
+    font-size: 35px;
     font-weight: var(--fw-semibold);
 }
 
 h5{
     font-family: 'Montserrat', sans-serif;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: var(--fw-semibold);
 }
 
 h6{
     font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-    font-weight: var(--fw-semibold);
+    font-size: 20px;
+    font-weight: var(--fw-regular);
 }
 
 p{
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: var(--fw-regular);
 }
 
@@ -59,12 +59,12 @@ p{
 
 .styled-button{
     border: none;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: .75rem 1rem .75rem 1rem;
     border-radius: 30px;
     background-color: var(--PillCallYellow);
     color: var(--PillCallDarkBlue);
     font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: var(--fw-semibold);
     max-width: 30rem;
 }
@@ -80,6 +80,7 @@ p{
 footer{
     background-color: var(--PillCallYellow);
 }
+
 
 /*Navigation*/
 
@@ -128,7 +129,7 @@ nav a:hover {
 }
 
 #youtube-contain{
-    min-height: 50vh;
+    min-height: 40vh;
 }
 
 #youtube-container-full, #about-section-top, #get-started-top {
@@ -146,7 +147,7 @@ nav a:hover {
 }
 
 .icons{
-    height: 4.5rem;
+    height: 4rem;
 }
 
 .styled-text{
@@ -235,10 +236,32 @@ input[type="submit"]:hover {
     #function-icons-vertical{
         display: none!important;
     }
+    section{
+        padding-right: 5rem;
+        padding-left: 5rem;
+    }
+    .main-icon{
+        justify-content: center;
+    }
+    .home-bottle{
+        max-height: 30vh;
+    }
 }
 
-@media (min-width: 991px) {
+@media (min-width: 992px) {
     #function-icons-horizontal{
         display: none!important;
     }
+    section{
+        padding-right: 9rem;
+        padding-left: 9rem;
+    }
 }
+
+@media (max-width: 576px){
+    section{
+        padding-right: 3rem;
+        padding-left: 3rem;
+    }
+}
+
