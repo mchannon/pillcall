@@ -113,6 +113,9 @@ nav a:hover {
     margin-top: 2rem;
 }
 
+/*footer*/
+
+
 /*home page*/
 
 /*addresses horizontal scroll*/
@@ -241,6 +244,39 @@ input[type="submit"]:hover {
 #invest-pic{
     max-height: 60vh;
 }
+
+
+/*footer*/
+.mailing-form label {
+    color: var(--PillCallDarkBlue)!important;
+    font-size: 16px!important;
+}
+
+.mailing-form #message,
+.mailing-form #message-label
+{
+    display: none!important;
+}
+
+#mailing-submit{
+    background-color: var(--PillCallDarkBlue);
+    color: var(--PillCallGrey);
+    font-size: 16px;
+    margin-top: 1rem
+}
+
+#mailing-submit:hover {
+    background-color: var(--PillCallGrey);
+    color: var(--PillCallDarkBlue);
+}
+
+.mailing-form input[type="text"],
+.mailing-form textarea,
+#mailing-form-wrapper{
+    width: 60vw!important;
+
+}
+
 
 /*media queries*/
 @media (max-width: 1200px) {
