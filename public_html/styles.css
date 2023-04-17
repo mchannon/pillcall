@@ -223,16 +223,15 @@ nav a:hover {
 
 input[type="submit"] {
     border: none;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: .75rem 1rem .75rem 1rem;
     border-radius: 30px;
     background-color: var(--PillCallYellow);
     color: var(--PillCallDarkBlue);
     font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: var(--fw-semibold);
     max-width: 30rem;
-    cursor: pointer;
-    margin-top: 3rem;
+    margin-top: 3rem
 }
 input[type="submit"]:hover {
     background-color: var(--PillCallGrey);
