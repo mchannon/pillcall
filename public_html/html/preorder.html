@@ -3,78 +3,146 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preorder</title>
+  <title>Preorder | PillCall Inc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="../styles.css">
-
   <style>
-    /* NEW HEADER */
-    header {
-      background: #0e1c3d;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    /* PILLCALL NAV HEADER */
+    header.pc-header {
+      background: #121E44;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 72px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.22);
     }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo img { height: 42px; width: auto; }
-    header nav { display: flex; gap: 2rem; align-items: center; }
-    header nav a {
-      color: rgba(255,255,255,0.78);
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.15s;
-      letter-spacing: 0.01em;
+    header.pc-header .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    header.pc-header .logo img { height:42px; width:auto; }
+    header.pc-header nav { display:flex; gap:1.75rem; align-items:center; }
+    header.pc-header nav a {
+      color:rgba(255,255,255,0.78); font-family:'Montserrat',sans-serif;
+      font-size:1rem; font-weight:600; text-decoration:none; transition:color 0.15s; white-space:nowrap;
     }
-    header nav a:hover { color: #f5a81c; }
-    header nav a.active { color: #f5a81c; font-weight: 700; }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
+    header.pc-header nav a:hover { color:#FDB735; }
+    header.pc-header nav a.active {
+      color:#121E44; background:#FDB735; border-radius:2em; padding:0.35rem 1.1rem; font-weight:700;
     }
-    .nav-hamburger span {
-      display: block; width: 24px; height: 2px; background: white; border-radius: 2px;
+    .pc-hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .pc-hamburger span { display:block; width:24px; height:2px; background:white; border-radius:2px; }
+    #pc-mobile-nav { display:none; background:#121E44; padding:0.75rem 2rem 1.25rem; border-bottom:2px solid #FDB735; }
+    #pc-mobile-nav a { display:block; color:rgba(255,255,255,0.82); font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; padding:0.65rem 0; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+    #pc-mobile-nav a:last-child { border-bottom:none; }
+    #pc-mobile-nav a.active { color:#FDB735; }
+    @media (max-width:768px) { header.pc-header { padding:0 1.25rem; } header.pc-header nav { display:none; } .pc-hamburger { display:flex; } }
+
+    /* PAGE */
+    .preorder-hero {
+      background: var(--PillCallDarkBlue);
+      color: var(--PillCallGrey);
+      padding: 4.5rem 3rem 5rem;
+      position: relative; overflow: hidden;
     }
-    #mobile-nav {
-      display: none;
-      background: #0e1c3d;
-      padding: 1rem 2rem 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .preorder-hero::before {
+      content:''; position:absolute;
+      width:420px; height:420px;
+      background:rgba(253,183,53,0.07);
+      border-radius:50%; right:-80px; top:-100px; pointer-events:none;
     }
-    #mobile-nav a {
-      display: block;
-      color: rgba(255,255,255,0.78);
-      font-size: 1rem;
-      padding: 0.6rem 0;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+    .preorder-hero .inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+    .preorder-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight:800; line-height:1.1; max-width:720px; margin-bottom:1rem;
     }
-    #mobile-nav a:last-child { border-bottom: none; }
-    #mobile-nav a.active { color: #f5a81c; font-weight: 700; }
-    @media (max-width: 680px) {
-      header { padding: 0 1.25rem; }
-      header nav { display: none; }
-      .nav-hamburger { display: flex; }
+    .preorder-hero h1 em { font-style:normal; color:var(--PillCallYellow); }
+    .preorder-hero .sub { font-size:1.1rem; max-width:560px; opacity:0.88; margin-bottom:0; }
+
+    /* PAYMENT CARDS */
+    .payment-section { background:#fff; padding:4rem 3rem; }
+    .payment-section .inner { max-width:1100px; margin:0 auto; }
+    .price-badge {
+      display:inline-block;
+      background:var(--PillCallYellow); color:var(--PillCallDarkBlue);
+      font-size:1.8rem; font-weight:900;
+      padding:0.4rem 1.5rem; border-radius:8px;
+      margin-bottom:1.25rem;
+    }
+    .payment-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem;
+      margin-top:2.5rem;
+    }
+    .pay-card {
+      border:2px solid #e0e8f5; border-radius:14px; padding:1.75rem 1.25rem;
+      display:flex; flex-direction:column; align-items:center; gap:0.75rem;
+      text-align:center; transition:box-shadow 0.2s, border-color 0.2s;
+      text-decoration:none; color:inherit;
+    }
+    .pay-card:hover { box-shadow:0 6px 28px rgba(18,30,68,0.12); border-color:var(--PillCallYellow); text-decoration:none; color:inherit; }
+    .pay-card .pay-icon { font-size:2.6rem; line-height:1; }
+    .pay-card h3 { font-size:1.05rem; font-weight:800; color:var(--PillCallDarkBlue); margin:0; }
+    .pay-card .pay-handle { font-size:1rem; font-weight:700; color:#444; }
+    .pay-card .pay-btn {
+      display:block; width:100%; margin-top:0.5rem;
+      background:var(--PillCallYellow); color:var(--PillCallDarkBlue);
+      font-family:'Montserrat',sans-serif; font-size:0.95rem; font-weight:800;
+      border:none; border-radius:6px; padding:0.65rem 1rem; cursor:pointer;
+      text-decoration:none; transition:filter 0.15s;
+    }
+    .pay-card .pay-btn:hover { filter:brightness(1.07); text-decoration:none; color:var(--PillCallDarkBlue); }
+    .pay-note { font-size:0.78rem; color:#999; }
+
+    /* INSTRUCTIONS */
+    .instruction-box {
+      background:var(--PillCallDarkBlue); color:#fff;
+      border-radius:14px; padding:2.5rem; margin-top:3rem;
+      position:relative; overflow:hidden;
+    }
+    .instruction-box::after { content:''; position:absolute; width:200px; height:200px; background:rgba(253,183,53,0.07); border-radius:50%; right:-30px; bottom:-40px; }
+    .instruction-box h4 { color:var(--PillCallYellow); font-size:1.1rem; font-weight:800; margin-bottom:1.5rem; }
+    .inst-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; position:relative; z-index:1; }
+    .inst-step { display:flex; gap:1rem; align-items:flex-start; }
+    .inst-num {
+      width:32px; height:32px; border-radius:50%;
+      background:var(--PillCallYellow); color:var(--PillCallDarkBlue);
+      font-size:0.95rem; font-weight:900; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .inst-step p { font-size:0.95rem; color:rgba(255,255,255,0.85); margin:0; line-height:1.5; }
+    .inst-step p strong { color:#fff; }
+
+    /* WHAT YOU GET */
+    .what-section { background:var(--PillCallGrey); padding:4rem 3rem; }
+    .what-section .inner { max-width:1100px; margin:0 auto; }
+    .what-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem; }
+    .what-card { background:#fff; border-radius:12px; padding:1.75rem; box-shadow:0 2px 12px rgba(18,30,68,0.07); }
+    .what-card h5 { color:var(--PillCallDarkBlue); font-size:1rem; font-weight:800; margin-bottom:0.6rem; }
+    .what-card p { font-size:0.93rem; color:#555; margin:0; }
+
+    /* SIZE GUIDE */
+    .size-table { width:100%; border-collapse:collapse; margin-top:1.5rem; font-size:0.95rem; }
+    .size-table th { background:rgba(0,0,0,0.3); color:#fff; padding:0.65rem 1rem; text-align:left; font-weight:700; }
+    .size-table td { padding:0.65rem 1rem; border-bottom:1px solid rgba(255,255,255,0.2); color:#fff; }
+    .size-table tr:last-child td { border-bottom:none; }
+    .size-table tr:nth-child(even) td { background:rgba(255,255,255,0.1); }
+    .cap-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:7px; vertical-align:middle; }
+
+    @media (max-width:900px) {
+      .payment-grid { grid-template-columns:repeat(2,1fr); }  /* already 2-col */
+      .inst-steps { grid-template-columns:1fr; }
+      .what-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:600px) {
+      .preorder-hero, .payment-section, .what-section { padding-left:1.5rem; padding-right:1.5rem; }
+      .payment-grid { grid-template-columns:repeat(2,1fr); }
+      .what-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 
-
 <body>
+
 <!-- NAV -->
-<header>
-  <a class="logo" href="./index.html">
-    <img src="../assets/pillcall-logo.svg" alt="PillCall logo" />
+<header class="pc-header">
+  <a class="logo" href="../../index.html">
+    <img src="../assets/pillcall-logo.svg" alt="PillCall" />
   </a>
   <nav>
     <a href="./about.html">About</a>
@@ -83,11 +151,11 @@
     <a href="./preorder.html" class="active">Preorder</a>
     <a href="./invest.html">Invest</a>
   </nav>
-  <button class="nav-hamburger" id="hamburger-btn" aria-label="Menu">
+  <button class="pc-hamburger" id="pc-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </header>
-<div id="mobile-nav">
+<div id="pc-mobile-nav">
   <a href="./about.html">About</a>
   <a href="./get-started.html">Get Started</a>
   <a href="./how-it-works.html">How It Works</a>
@@ -95,77 +163,139 @@
   <a href="./invest.html">Invest</a>
 </div>
 
+<!-- HERO -->
+<section class="preorder-hero">
+  <div class="inner">
+    <h1>Lock In Your PillCall Cap <em>Right Now.</em></h1>
+    <p class="sub">$30 deposit. Locks in <strong>3 months' service + 3 bonus months free</strong> — a $60 value. Then just $10/month, cancel anytime.</p>
+  </div>
+</section>
 
-<!--Invest Info-->
-<section class="mt-5">
+<!-- PAYMENT -->
+<section class="payment-section">
+  <div class="inner">
+    <div class="price-badge">$30 now · 3 months' service + 3 bonus months free · then $10/month</div>
+    <h4 style="color:var(--PillCallDarkBlue); margin-bottom:0.5rem;">Pay any way you already have on your phone.</h4>
+    <p style="color:#555; font-size:1rem; max-width:680px;">Send <strong>$30</strong> to any option below with your <strong>name, email, and cap size</strong> in the memo. You get the cap plus 3 months of service, then 3 bonus months free — <strong>$60 of value for $30</strong>. After 6 months it's $10/month, cancel anytime.</p>
 
-  <div class="row mt-5">
-    <div class="col-lg-8">
-      <div>
-        <h4>Preorder Your PillCall Caps Today!</h4>
-        <p>Secure your place in line and help bring PillCall to millions of households across the US!</p>
-        <h4 class="mt-5">Where We Are Now</h4>
-        <p>PillCall’s servers are set up and running. PillCall’s iPhone app has been approved and is on the App Store. PillCall has three working prototype caps, perfectly capable of being sold for $129 each, but to be used for marketing purposes, Getting to 100 million caps in use will require a substantial marketing push, not to mention a substantial upgrade to the size of our assembly lines to make the caps themselves. The cap design also has room for improvement and a road map is in place for achieving faster and more reliable assemblies with fewer components.
-        </p>
-      </div>
-      <div class="mt-5">
-        <button type="button" class="styled-button me-3 mb-3" onclick="window.location.href='https://wefunder.com/PillCall'">Visit Our WeFunder</button>
+    <div class="payment-grid">
+
+      <!-- Cash App -->
+      <a class="pay-card" href="https://cash.app/$pillcallpillcap" target="_blank" rel="noopener">
+        <div class="pay-icon">💚</div>
+        <h3>Cash App</h3>
+        <div class="pay-handle">$pillcallpillcap</div>
+        <span class="pay-btn">Send $30</span>
+        <div class="pay-note">Tap to open Cash App</div>
+      </a>
+
+      <!-- Venmo -->
+      <a class="pay-card" href="https://venmo.com/pillcall" target="_blank" rel="noopener">
+        <div class="pay-icon">💙</div>
+        <h3>Venmo</h3>
+        <div class="pay-handle">@pillcall</div>
+        <span class="pay-btn">Send $30</span>
+        <div class="pay-note">Tap to open Venmo</div>
+      </a>
+
+
+    </div>
+
+
+    <p style="text-align:center; margin-top:1.5rem; color:#666; font-size:0.95rem;">
+      <strong>Paying in person?</strong> Cash works great — just give your name, email, and cap size on the spot.
+    </p>
+
+    <!-- How it works box -->
+    <div class="instruction-box">
+      <h4>How the preorder works</h4>
+      <div class="inst-steps">
+        <div class="inst-step">
+          <div class="inst-num">1</div>
+          <p>Send <strong>$30</strong> using any payment method above. Put your <strong>name, email, and cap size</strong> in the memo line.</p>
+        </div>
+        <div class="inst-step">
+          <div class="inst-num">2</div>
+          <p>You'll get a <strong>confirmation text or email</strong> from the founder within 24 hours. Your spot is locked.</p>
+        </div>
+        <div class="inst-step">
+          <div class="inst-num">3</div>
+          <p>When your caps ship, you're all set. You get <strong>3 months' service plus 3 bonus months free</strong>. After 6 months, $10/month — cancel anytime.</p>
+        </div>
       </div>
     </div>
-    <div class="col-lg-4 d-flex">
-      <img id="invest-pic" src="../assets/invest/matt-portrait.png" class="img-fluid mx-auto d-block mt-lg-0 mt-5 align-self-center" alt="Image of PillCall founder, Matt Channon. Matt is holding a microphone and speaking to an audience. Image is surrounded by various graphics."/>
+
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-section">
+  <div class="inner">
+    <h4 style="color:var(--PillCallDarkBlue);">What You're Getting</h4>
+    <p style="color:#555; margin-top:0.5rem;">$30 gets you the cap <em>plus</em> 3 months of SMS service, then 3 bonus months free — a $60 value. You're not just reserving a spot, you're getting half a year of service for being early.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <h5>WiFi Smart Cap</h5>
+        <p>Screws onto your existing prescription bottle. Connects to your home WiFi in about two minutes using the free iOS app.</p>
+      </div>
+      <div class="what-card">
+        <h5>SMS Alerts — No Subscription</h5>
+        <p>Texts you when you forget. Silent when you remember. $10/month after your free period — less than a single missed-dose ER copay.</p>
+      </div>
+      <div class="what-card">
+        <h5>Double-Dose Protection</h5>
+        <p>If the cap is opened twice within five minutes, an alert goes out before you take a second pill by mistake.</p>
+      </div>
+      <div class="what-card">
+        <h5>Privacy by Design</h5>
+        <p>PillCall never knows what medication you're taking or who you are. No data sold. No Big Pharma. Ever.</p>
+      </div>
+      <div class="what-card">
+        <h5>Four Sizes</h5>
+        <p>Fits 28mm, 33mm, 38mm, and 45mm bottle threads — the most common sizes in US pharmacies. Not sure? See the guide below.</p>
+      </div>
+      <div class="what-card">
+        <h5>Working Today</h5>
+        <p>This isn't a concept. The app is live on the App Store, the servers are running, and three working prototypes exist right now.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!--contact form-->
-<section class="py-5 mt-5 blue-section">
-  <div class="d-grid justify-content-center">
-  <h4>Contact Us</h4>
-  <p>Have questions about investing in PillCall? Reach out below.</p>
-  <div id="email-wrapper">
-    <form action="g.pl?i=internet&r=4" id="email-form" method="post">
-      <!--                <form id="email-form" onsubmit="js.sendMail(); return false;">
-       -->
-      <input type="text" id="name" name="name" />
-      <label for="namo">Name</label>
-      <input type="text" id="namo" name="namo" />
-      <label for="email">Email</label>
-      <input type="text" id="umbrella" name="umbrella" />
-      <label for="umbrella" id="umbrella-label">Humans, please leave this field blank</label>
-      <input type="text" id="email" name="email" />
-      <input type="text" id="orangepeel" name="orangepeel" />
-      <label for="message">Message</label>
-      <textarea id="message" name="message"></textarea>
-      <span id="feedback-submit">
-                        <span id="feedback"></span>
-                        <input type="submit" name="submit" value="Submit" />
-      </span>
-    </form>
-  </div>
+<!-- SIZE GUIDE -->
+<section class="px-5 py-5 blue-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <h4>Which Size Do I Need?</h4>
+    <p class="mt-2">Put the size in your memo when you send payment. Not sure? Check our <a href="./get-started.html" style="color:var(--PillCallYellow);">$20-bill sizing guide</a> — takes 30 seconds.</p>
+    <table class="size-table mt-4">
+      <thead>
+        <tr><th>Size</th><th>Color</th><th>Thread</th><th>Typical Bottle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Small</td><td><span class="cap-dot" style="background:#e53935;"></span>Red</td><td>28mm</td><td>30-count standard bottles</td></tr>
+        <tr><td>Medium</td><td><span class="cap-dot" style="background:#fb8c00;"></span>Orange</td><td>33mm</td><td>60-count and most generics</td></tr>
+        <tr><td>Large</td><td><span class="cap-dot" style="background:#43a047;"></span>Green</td><td>38mm</td><td>90-count and bulk bottles</td></tr>
+        <tr><td>Extra Large</td><td><span class="cap-dot" style="background:#1e88e5;"></span>Blue</td><td>45mm</td><td>120-count, vitamins, supplements</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
-
-<footer class="p-5 mt-5">
-  <div onclick="window.scrollTo(0, 0)" class="return-top d-flex flex-column align-content-center">
+<footer class="p-5 mt-0">
+  <div onclick="window.scrollTo(0,0)" class="return-top d-flex flex-column align-content-center" style="cursor:pointer;">
     <img class="mx-auto" src="../assets/up-arrow.svg" alt="up arrow">
     <h6 class="text-center mt-3">Return to Top</h6>
   </div>
-  <p class="text-center mt-3">© 2023, PillCall Inc</p>
+  <p class="text-center mt-3">© 2026, PillCall Inc</p>
 </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('hamburger-btn');
-    var mn  = document.getElementById('mobile-nav');
-    if (btn && mn) {
-      btn.addEventListener('click', function() {
-        mn.style.display = mn.style.display === 'block' ? 'none' : 'block';
-      });
-    }
-  });
+  (function(){
+    var btn=document.getElementById('pc-hamburger');
+    var mn=document.getElementById('pc-mobile-nav');
+    if(btn&&mn){ btn.addEventListener('click',function(){ mn.style.display=mn.style.display==='block'?'none':'block'; }); }
+  })();
 </script>
 </body>
 </html>

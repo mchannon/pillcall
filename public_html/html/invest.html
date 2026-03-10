@@ -3,78 +3,153 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Invest</title>
+  <title>Invest in PillCall | PillCall Inc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="../styles.css">
-
   <style>
-    /* NEW HEADER */
-    header {
-      background: #0e1c3d;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    /* PILLCALL NAV HEADER */
+    header.pc-header {
+      background: #121E44;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 72px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.22);
     }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo img { height: 42px; width: auto; }
-    header nav { display: flex; gap: 2rem; align-items: center; }
-    header nav a {
-      color: rgba(255,255,255,0.78);
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.15s;
-      letter-spacing: 0.01em;
+    header.pc-header .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    header.pc-header .logo img { height:42px; width:auto; }
+    header.pc-header nav { display:flex; gap:1.75rem; align-items:center; }
+    header.pc-header nav a {
+      color:rgba(255,255,255,0.78); font-family:'Montserrat',sans-serif;
+      font-size:1rem; font-weight:600; text-decoration:none; transition:color 0.15s; white-space:nowrap;
     }
-    header nav a:hover { color: #f5a81c; }
-    header nav a.active { color: #f5a81c; font-weight: 700; }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
+    header.pc-header nav a:hover { color:#FDB735; }
+    header.pc-header nav a.active {
+      color:#121E44; background:#FDB735; border-radius:2em; padding:0.35rem 1.1rem; font-weight:700;
     }
-    .nav-hamburger span {
-      display: block; width: 24px; height: 2px; background: white; border-radius: 2px;
+    .pc-hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .pc-hamburger span { display:block; width:24px; height:2px; background:white; border-radius:2px; }
+    #pc-mobile-nav { display:none; background:#121E44; padding:0.75rem 2rem 1.25rem; border-bottom:2px solid #FDB735; }
+    #pc-mobile-nav a { display:block; color:rgba(255,255,255,0.82); font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; padding:0.65rem 0; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+    #pc-mobile-nav a:last-child { border-bottom:none; }
+    #pc-mobile-nav a.active { color:#FDB735; }
+    @media (max-width:768px) { header.pc-header { padding:0 1.25rem; } header.pc-header nav { display:none; } .pc-hamburger { display:flex; } }
+
+    /* INVEST PAGE STYLES */
+    :root {
+      --navy: #121E44;
+      --yellow: #FDB735;
+      --offwhite: #EEE7E1;
     }
-    #mobile-nav {
-      display: none;
-      background: #0e1c3d;
-      padding: 1rem 2rem 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+
+    .hero { background:var(--navy); color:#fff; padding:5rem 3rem 6rem; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; width:420px; height:420px; background:rgba(197,178,150,0.18); border-radius:50%; right:-80px; top:-100px; pointer-events:none; }
+    .hero::after  { content:''; position:absolute; width:260px; height:260px; background:rgba(197,178,150,0.12); border-radius:50%; right:180px; bottom:-80px; pointer-events:none; }
+    .hero-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+    .hero h1 { font-family:'Montserrat',sans-serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:800; line-height:1.1; max-width:700px; margin-bottom:1.25rem; color:#fff; }
+    .hero h1 em { font-style:normal; color:var(--yellow); }
+    .hero p { font-size:1.15rem; max-width:560px; opacity:0.88; margin-bottom:2.25rem; color:#fff; }
+    .btn-invest { display:inline-block; background:var(--yellow); color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; padding:0.85rem 2.4rem; border-radius:6px; border:none; cursor:pointer; transition:filter 0.15s; text-decoration:none; }
+    .btn-invest:hover { filter:brightness(1.08); color:var(--navy); text-decoration:none; }
+
+    .stats-bar { background:#fff; display:flex; flex-wrap:wrap; border-bottom:2px solid #eee; }
+    .stat { flex:1 1 200px; padding:2.25rem 1.5rem; text-align:center; border-right:1px solid #eee; }
+    .stat:last-child { border-right:none; }
+    .stat-num { font-family:'Montserrat',sans-serif; font-size:2.6rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+    .stat-num span { color:var(--yellow); }
+    .stat-label { font-size:0.85rem; color:#666; line-height:1.35; }
+
+    .section-white    { background:#fff;            padding:5rem 3rem; }
+    .section-navy     { background:var(--navy);     padding:5rem 3rem; color:#fff; position:relative; overflow:hidden; }
+    .section-offwhite { background:var(--offwhite); padding:5rem 3rem; }
+    .inner { max-width:1100px; margin:0 auto; }
+
+    .section-white h2, .section-offwhite h2 { font-family:'Montserrat',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; color:var(--navy); margin-bottom:0.6rem; }
+    .section-navy h2  { font-family:'Montserrat',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; color:#fff; margin-bottom:0.6rem; }
+    .section-white p, .section-offwhite p { font-size:1.05rem; margin-bottom:0.85rem; }
+    .section-navy p   { color:rgba(255,255,255,0.85); font-size:1.05rem; margin-bottom:0.85rem; }
+
+    .blob1 { position:absolute; width:340px; height:340px; background:rgba(197,178,150,0.12); border-radius:50%; right:-60px; top:-80px; pointer-events:none; }
+    .blob2 { position:absolute; width:200px; height:200px; background:rgba(197,178,150,0.08); border-radius:50%; left:60px; bottom:-50px; pointer-events:none; }
+
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem; }
+    .invest-card { background:#fff; border-radius:12px; padding:2rem; box-shadow:0 2px 16px rgba(14,28,61,0.08); }
+    .invest-card h3 { font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:800; color:var(--navy); margin-bottom:1rem; }
+    .invest-card ul { list-style:none; padding:0; margin:0; }
+    .invest-card ul li { font-size:0.97rem; padding:0.4rem 0 0.4rem 1.4rem; position:relative; border-bottom:1px solid #f0f0f0; }
+    .invest-card ul li:last-child { border-bottom:none; }
+    .invest-card ul li::before { content:'→'; color:var(--yellow); font-weight:700; position:absolute; left:0; }
+
+    .four-col { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:2.5rem; position:relative; z-index:1; }
+    .feature h3 { font-family:'Montserrat',sans-serif; color:var(--yellow); font-size:1rem; font-weight:800; margin-bottom:0.75rem; line-height:1.25; }
+    .feature p { font-size:0.92rem; color:rgba(255,255,255,0.82); margin:0; }
+
+    .timeline { margin-top:2rem; position:relative; }
+    .timeline::before { content:''; position:absolute; left:7px; top:8px; bottom:8px; width:3px; background:var(--yellow); }
+    .milestone { display:flex; gap:1.75rem; margin-bottom:2.25rem; position:relative; }
+    .milestone-dot { width:17px; height:17px; background:var(--yellow); border-radius:50%; flex-shrink:0; margin-top:4px; position:relative; z-index:1; }
+    .milestone-dot.future { background:transparent; border:3px solid var(--yellow); }
+    .milestone-date { font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--yellow); margin-bottom:0.2rem; }
+    .milestone-content h3 { font-family:'Montserrat',sans-serif; font-size:1.05rem; font-weight:800; color:#fff; margin-bottom:0.25rem; }
+    .milestone-content p { font-size:0.92rem; color:rgba(255,255,255,0.75); margin:0; }
+
+    .fund-bars { margin-top:2rem; }
+    .fund-item { display:flex; align-items:center; gap:1.25rem; margin-bottom:1.1rem; }
+    .fund-label { font-family:'Montserrat',sans-serif; width:190px; font-size:0.92rem; font-weight:600; color:var(--navy); flex-shrink:0; }
+    .fund-track { flex:1; height:16px; background:#e8e8e8; border-radius:4px; overflow:hidden; }
+    .fund-fill  { height:100%; background:var(--yellow); border-radius:4px; }
+    .fund-pct   { width:40px; text-align:right; font-family:'Montserrat',sans-serif; font-size:0.88rem; font-weight:800; color:var(--navy); }
+
+    .founder-box { background:var(--navy); border-radius:14px; padding:2.5rem; color:#fff; margin-top:2rem; position:relative; overflow:hidden; }
+    .founder-box::after { content:''; position:absolute; width:220px; height:220px; background:rgba(245,168,28,0.08); border-radius:50%; right:-40px; bottom:-60px; }
+    .founder-box h3 { font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:800; color:var(--yellow); margin-bottom:0.75rem; }
+    .founder-box p  { font-size:0.97rem; color:rgba(255,255,255,0.85); margin-bottom:0.75rem; }
+    .founder-box p:last-child { margin-bottom:0; }
+
+    .connect-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.75rem; margin-top:2.5rem; }
+    .connect-card { border:2px solid #e0e8f5; border-radius:14px; padding:2rem; display:flex; flex-direction:column; gap:0.75rem; background:#fff; transition:box-shadow 0.2s,border-color 0.2s; }
+    .connect-card:hover { box-shadow:0 6px 28px rgba(14,28,61,0.10); border-color:var(--yellow); }
+    .connect-card.primary { border-color:var(--navy); }
+    .connect-icon { font-size:2.2rem; line-height:1; }
+    .connect-card h3 { font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:800; color:var(--navy); margin:0; }
+    .connect-card p { font-size:0.95rem; color:#555; margin:0; flex:1; }
+    .btn-text { display:block; text-align:center; margin-top:0.5rem; background:var(--yellow); color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; padding:0.85rem 2.4rem; border-radius:6px; border:none; cursor:pointer; text-decoration:none; transition:filter 0.15s; }
+    .btn-text:hover { filter:brightness(1.08); color:var(--navy); text-decoration:none; }
+    .btn-outline-invest { display:block; text-align:center; margin-top:0.5rem; background:transparent; border:2px solid var(--navy); color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; padding:0.85rem 2.4rem; border-radius:6px; cursor:pointer; transition:background 0.15s,color 0.15s; text-decoration:none; }
+    .btn-outline-invest:hover { background:var(--navy); color:#fff; text-decoration:none; }
+    .connect-note { font-size:0.75rem; color:#999; text-align:center; }
+
+    .form-wrap { max-width:680px; margin:2.5rem auto 0; background:#fff; border-radius:14px; padding:2.5rem; box-shadow:0 4px 24px rgba(14,28,61,0.10); }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+    .form-full { grid-column:1 / -1; }
+    .form-label { display:block; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--navy); margin-bottom:0.4rem; }
+    .form-input { width:100%; border:2px solid #dde3f0; border-radius:7px; padding:0.7rem 0.9rem; font-size:0.97rem; font-family:'Montserrat',sans-serif; color:#2e2e2e; background:#fff; outline:none; transition:border-color 0.15s; }
+    .form-input:focus { border-color:var(--yellow); }
+    textarea.form-input { resize:vertical; min-height:90px; }
+    .btn-submit { width:100%; margin-top:1.5rem; font-size:1.05rem; padding:1rem; border-radius:7px; }
+    .form-note { font-size:0.78rem; color:#888; text-align:center; margin-top:0.85rem; }
+    #success-msg { display:none; background:#edfaee; border:2px solid #5cc46a; border-radius:8px; padding:1.5rem; color:#2a7a34; font-weight:700; text-align:center; margin-top:1rem; font-size:1.05rem; }
+    .form-toggle-btn { background:none; border:none; font-size:0.95rem; color:#888; cursor:pointer; padding:0.5rem 1rem; font-family:'Montserrat',sans-serif; transition:color 0.15s; }
+    .form-toggle-btn:hover { color:var(--navy); }
+
+    footer { background:var(--yellow); text-align:center; padding:2.5rem; color:var(--navy); }
+    footer p { font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:0.25rem; }
+    footer a { color:var(--navy); font-weight:700; }
+    footer small { font-size:0.85rem; opacity:0.75; }
+
+    @media (max-width:860px) { .four-col { grid-template-columns:1fr 1fr; } }
+    @media (max-width:680px) {
+      .two-col, .form-grid, .connect-grid { grid-template-columns:1fr; }
+      .hero, .section-white, .section-navy, .section-offwhite { padding-left:1.25rem; padding-right:1.25rem; }
     }
-    #mobile-nav a {
-      display: block;
-      color: rgba(255,255,255,0.78);
-      font-size: 1rem;
-      padding: 0.6rem 0;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    #mobile-nav a:last-child { border-bottom: none; }
-    #mobile-nav a.active { color: #f5a81c; font-weight: 700; }
-    @media (max-width: 680px) {
-      header { padding: 0 1.25rem; }
-      header nav { display: none; }
-      .nav-hamburger { display: flex; }
-    }
+    @media (max-width:520px) { .four-col { grid-template-columns:1fr; } }
   </style>
 </head>
-
-
 <body>
+
 <!-- NAV -->
-<header>
-  <a class="logo" href="./index.html">
-    <img src="../assets/pillcall-logo.svg" alt="PillCall logo" />
+<header class="pc-header">
+  <a class="logo" href="../../index.html">
+    <img src="../assets/pillcall-logo.svg" alt="PillCall" />
   </a>
   <nav>
     <a href="./about.html">About</a>
@@ -83,11 +158,11 @@
     <a href="./preorder.html">Preorder</a>
     <a href="./invest.html" class="active">Invest</a>
   </nav>
-  <button class="nav-hamburger" id="hamburger-btn" aria-label="Menu">
+  <button class="pc-hamburger" id="pc-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </header>
-<div id="mobile-nav">
+<div id="pc-mobile-nav">
   <a href="./about.html">About</a>
   <a href="./get-started.html">Get Started</a>
   <a href="./how-it-works.html">How It Works</a>
@@ -95,77 +170,332 @@
   <a href="./invest.html" class="active">Invest</a>
 </div>
 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>A <em>$500 Billion Problem.</em><br>Fixed for $10/month.</h1>
+    <p>Medication non-adherence kills 125,000 Americans a year and costs the healthcare system half a trillion dollars. PillCall is the simplest solution ever built — and we're looking for investors who get it.</p>
+    <a href="#invest-form" class="btn-invest">Express Investment Interest</a>
+  </div>
+</section>
 
-<!--Invest Info-->
-<section class="mt-5">
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">$<span>500</span>B</div>
+    <div class="stat-label">Annual cost of medication<br>non-adherence in the US</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span>50</span>%</div>
+    <div class="stat-label">Of patients don't take<br>medication as directed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$<span>10</span><span style="font-size:1.2rem">/mo</span></div>
+    <div class="stat-label">Monthly subscription<br>after $10 cap purchase</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span>100</span>M</div>
+    <div class="stat-label">Target units/year<br>by 2030</div>
+  </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-lg-8">
-      <div>
-        <h4>Invest in PillCall!</h4>
-        <p>Help bring PillCall to millions of households across the US!</p>
-        <h4 class="mt-5">Where We Are Now</h4>
-        <p>PillCall’s servers are set up and running. PillCall’s iPhone app has been approved and is on the App Store. PillCall has three working prototype caps, perfectly capable of being sold for $129 each, but to be used for marketing purposes, Getting to 100 million caps in use will require a substantial marketing push, not to mention a substantial upgrade to the size of our assembly lines to make the caps themselves. The cap design also has room for improvement and a road map is in place for achieving faster and more reliable assemblies with fewer components.
-        </p>
+<!-- PROBLEM / SOLUTION -->
+<section class="section-white">
+  <div class="inner">
+    <h2>The Problem. Our Solution.</h2>
+    <p>Existing smart pill dispensers cost $80–$300 and replace bottles entirely. PillCall fits onto what patients already own — no behavior change required.</p>
+    <div class="two-col">
+      <div class="invest-card">
+        <h3>⚠️ The Problem</h3>
+        <ul>
+          <li>50% of patients skip or double-dose medications</li>
+          <li>125,000 deaths/year from non-adherence in the US</li>
+          <li>$300B+ in avoidable hospitalizations annually</li>
+          <li>Competitors require replacing the bottle — massive friction</li>
+          <li>LifeAlert-style systems run $30–$50/month</li>
+        </ul>
       </div>
-      <div class="mt-5">
-        <button type="button" class="styled-button me-3 mb-3" onclick="window.location.href='https://wefunder.com/PillCall'">Visit Our WeFunder</button>
+      <div class="invest-card">
+        <h3>✅ PillCall's Solution</h3>
+        <ul>
+          <li>Screws onto any existing prescription bottle</li>
+          <li>Texts you when you forget. Silent when you remember.</li>
+          <li>$10/month subscription — cancel anytime. No hidden fees.</li>
+          <li>Zero patient data collected — privacy by design</li>
+          <li>Four sizes cover the most common US bottle threads</li>
+        </ul>
       </div>
-    </div>
-    <div class="col-lg-4 d-flex">
-      <img id="invest-pic" src="../assets/invest/matt-portrait.png" class="img-fluid mx-auto d-block mt-lg-0 mt-5 align-self-center" alt="Image of PillCall founder, Matt Channon. Matt is holding a microphone and speaking to an audience. Image is surrounded by various graphics."/>
     </div>
   </div>
 </section>
 
-<!--contact form-->
-<section class="py-5 mt-5 blue-section">
-  <div class="d-grid justify-content-center">
-  <h4>Contact Us</h4>
-  <p>Have questions about investing in PillCall? Reach out below.</p>
-  <div id="email-wrapper">
-    <form action="g.pl?i=internet&r=4" id="email-form" method="post">
-      <!--                <form id="email-form" onsubmit="js.sendMail(); return false;">
-       -->
-      <input type="text" id="name" name="name" />
-      <label for="namo">Name</label>
-      <input type="text" id="namo" name="namo" />
-      <label for="email">Email</label>
-      <input type="text" id="umbrella" name="umbrella" />
-      <label for="umbrella" id="umbrella-label">Humans, please leave this field blank</label>
-      <input type="text" id="email" name="email" />
-      <input type="text" id="orangepeel" name="orangepeel" />
-      <label for="message">Message</label>
-      <textarea id="message" name="message"></textarea>
-      <span id="feedback-submit">
-                        <span id="feedback"></span>
-                        <input type="submit" name="submit" value="Submit" />
-      </span>
-    </form>
-  </div>
+<!-- WHY INVEST -->
+<section class="section-navy">
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="inner">
+    <h2>Why Invest in PillCall</h2>
+    <p>Targeting 100M Units, Per Year, by 2030.</p>
+    <div class="four-col">
+      <div class="feature">
+        <h3>Everybody Needs At Least One</h3>
+        <p>131 million Americans take at least one prescription medication. The TAM isn't a niche — it's the entire adult population.</p>
+      </div>
+      <div class="feature">
+        <h3>Privacy Matters, Privacy Respected</h3>
+        <p>Big Pharma wants to monetize medication compliance data. PillCall pledges never to sell or rent customer information. That's a real moat.</p>
+      </div>
+      <div class="feature">
+        <h3>Cheaper &amp; Easier than LifeAlert</h3>
+        <p>When an elderly loved one misses their pill and doesn't answer your call, you know something's wrong. PillCall is the early warning system families actually need.</p>
+      </div>
+      <div class="feature">
+        <h3>Proven, Working Prototype</h3>
+        <p>This isn't a pitch deck concept. It's a working ESP32-based IoT device with a live iOS App Store listing. The hard engineering is done.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-
-<footer class="p-5 mt-5">
-  <div onclick="window.scrollTo(0, 0)" class="return-top d-flex flex-column align-content-center">
-    <img class="mx-auto" src="../assets/up-arrow.svg" alt="up arrow">
-    <h6 class="text-center mt-3">Return to Top</h6>
+<!-- TRACTION -->
+<section class="section-navy" style="padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07);">
+  <div class="blob1"></div>
+  <div class="inner">
+    <h2>Traction &amp; Milestones</h2>
+    <div class="timeline">
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">✓ Complete</div>
+          <h3>Working Prototype Built</h3>
+          <p>ESP32-based smart cap with WiFi, motion detection, and SMS. Tested across all four standard US bottle thread sizes.</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">✓ Complete</div>
+          <h3>iOS App — Live on the App Store</h3>
+          <p>Free companion app for one-time cap programming. Available now at the Apple App Store.</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">✓ Complete</div>
+          <h3>Preorder Campaign Live</h3>
+          <p>No-money-down preorders open at pillcall.com. Building the waitlist ahead of first manufacturing run.</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">✓ Presented</div>
+          <h3>1 Million Cups Pitch</h3>
+          <p>Presented to the 1 Million Cups entrepreneur community. Recording available on request.</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot future"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">→ Active Now</div>
+          <h3>Seed Round Open</h3>
+          <p>Seeking seed investment for manufacturing tooling, FCC/UL certification, and initial production run.</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot future"></div>
+        <div class="milestone-content">
+          <div class="milestone-date">→ 2026</div>
+          <h3>First Commercial Shipment</h3>
+          <p>Fulfill preorders, launch pharmacy and senior care partnerships, begin B2B channel development.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p class="text-center mt-3">© 2023, PillCall Inc</p>
+</section>
+
+<!-- USE OF FUNDS -->
+<section class="section-white">
+  <div class="inner">
+    <h2>Use of Investment Funds</h2>
+    <p>Seed capital takes a proven, working prototype to mass market. Every dollar has a specific job.</p>
+    <div class="fund-bars">
+      <div class="fund-item">
+        <span class="fund-label">Manufacturing Tooling</span>
+        <div class="fund-track"><div class="fund-fill" style="width:35%"></div></div>
+        <span class="fund-pct">35%</span>
+      </div>
+      <div class="fund-item">
+        <span class="fund-label">Initial Inventory Run</span>
+        <div class="fund-track"><div class="fund-fill" style="width:25%"></div></div>
+        <span class="fund-pct">25%</span>
+      </div>
+      <div class="fund-item">
+        <span class="fund-label">FCC / UL Certification</span>
+        <div class="fund-track"><div class="fund-fill" style="width:20%"></div></div>
+        <span class="fund-pct">20%</span>
+      </div>
+      <div class="fund-item">
+        <span class="fund-label">Sales &amp; Marketing</span>
+        <div class="fund-track"><div class="fund-fill" style="width:12%"></div></div>
+        <span class="fund-pct">12%</span>
+      </div>
+      <div class="fund-item">
+        <span class="fund-label">Operations</span>
+        <div class="fund-track"><div class="fund-fill" style="width:8%"></div></div>
+        <span class="fund-pct">8%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section-offwhite">
+  <div class="inner">
+    <h2>The Founder</h2>
+    <p>The person who built this is also the person who can ship it.</p>
+    <div class="founder-box">
+      <h3>Engineer. Builder. Founder.</h3>
+      <p>PillCall was founded by an engineer with graduate degrees from New Mexico Tech and Georgia Tech, specializing in materials and electrical engineering. The core technology — an ultra-low-power ESP32-based IoT device with WiFi and SMS — was designed, prototyped, and tested entirely in-house.</p>
+      <p>If you rode with us at SXSW: you've already met the founder in person. He's driving Uber this week to fund the company while building it. That's not a liability — that's exactly the kind of resourcefulness that gets hardware products shipped on a budget.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="section-white" id="invest-form">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <h2>Book a Call</h2>
+      <p style="max-width:520px; margin:0 auto;">Pick a time that works for you. Thirty minutes — product walkthrough, financials, any questions you have.</p>
+    </div>
+
+    <div id="calendly-embed" style="min-width:320px; height:700px; border-radius:12px; overflow:hidden; border:2px solid #e0e8f5;"></div>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script>
+      window.addEventListener('load', function() {
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/matt-channon/30min',
+          parentElement: document.getElementById('calendly-embed'),
+          prefill: {}, utm: {}
+        });
+      });
+    </script>
+
+    <div class="connect-grid">
+      <div class="connect-card primary">
+        <div class="connect-icon">💬</div>
+        <h3>Text the Founder</h3>
+        <p>Fastest route. Text <strong>"INVEST"</strong> and you'll hear back personally — usually same day.</p>
+        <a href="sms:5056665432&body=INVEST" class="btn-text">Text (505) 666-5432</a>
+        <div class="connect-note">Works from any phone. No app needed.</div>
+      </div>
+      <div class="connect-card">
+        <div class="connect-icon">🤝</div>
+        <h3>Connect on LinkedIn</h3>
+        <p>Stay in the loop on PillCall's progress. Connect and you'll see every update as we grow.</p>
+        <a href="https://www.linkedin.com/in/channonmatt/" target="_blank" class="btn-outline-invest">Connect on LinkedIn</a>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem; text-align:center;">
+      <button class="form-toggle-btn" onclick="toggleForm()">
+        <span id="toggle-label">Have questions first? Send a message ▾</span>
+      </button>
+      <div id="fallback-form" style="display:none;">
+        <div class="form-wrap">
+          <div class="form-grid" id="the-form">
+            <div>
+              <label class="form-label" for="fname">First Name</label>
+              <input class="form-input" type="text" id="fname" placeholder="Jane" />
+            </div>
+            <div>
+              <label class="form-label" for="lname">Last Name</label>
+              <input class="form-input" type="text" id="lname" placeholder="Smith" />
+            </div>
+            <div>
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" placeholder="jane@example.com" />
+            </div>
+            <div>
+              <label class="form-label" for="phone">Phone (optional)</label>
+              <input class="form-input" type="tel" id="phone" placeholder="(555) 000-0000" />
+            </div>
+            <div>
+              <label class="form-label" for="role">I am a...</label>
+              <select class="form-input" id="role">
+                <option value="">Select one</option>
+                <option>Angel investor</option>
+                <option>VC / fund</option>
+                <option>Strategic partner</option>
+                <option>Advisor</option>
+                <option>Potential customer or distributor</option>
+                <option>Press / journalist</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" for="range">Investment range</label>
+              <select class="form-input" id="range">
+                <option value="">Prefer not to say</option>
+                <option>Under $25K</option>
+                <option>$25K – $100K</option>
+                <option>$100K – $500K</option>
+                <option>$500K – $1M</option>
+                <option>$1M+</option>
+              </select>
+            </div>
+            <div class="form-full">
+              <label class="form-label" for="msg">Questions or how you heard about us</label>
+              <textarea class="form-input" id="msg" placeholder="Met the founder at SXSW..."></textarea>
+            </div>
+          </div>
+          <button class="btn-invest btn-submit" onclick="submitForm()">Send My Information</button>
+          <div class="form-note">Your information will never be sold or shared.</div>
+          <div id="success-msg">✅ Thanks! We'll be in touch within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Call us at <a href="tel:5056665432">(505) 666-5432</a></p>
+  <small>© 2026, PillCall Inc &nbsp;·&nbsp; <a href="../../index.html">Home</a> &nbsp;·&nbsp; <a href="./preorder.html">Preorder</a></small>
 </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('hamburger-btn');
-    var mn  = document.getElementById('mobile-nav');
-    if (btn && mn) {
-      btn.addEventListener('click', function() {
-        mn.style.display = mn.style.display === 'block' ? 'none' : 'block';
-      });
+  function toggleForm() {
+    const form = document.getElementById('fallback-form');
+    const label = document.getElementById('toggle-label');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+      label.textContent = 'Hide form ▴';
+    } else {
+      form.style.display = 'none';
+      label.textContent = 'Have questions first? Send a message ▾';
     }
-  });
+  }
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!fname || !email) { alert('Please enter at least your name and email.'); return; }
+    document.getElementById('the-form').style.display = 'none';
+    document.querySelector('.btn-submit').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+<script>
+  (function(){
+    var btn=document.getElementById('pc-hamburger');
+    var mn=document.getElementById('pc-mobile-nav');
+    if(btn&&mn){ btn.addEventListener('click',function(){ mn.style.display=mn.style.display==='block'?'none':'block'; }); }
+  })();
 </script>
 </body>
 </html>
